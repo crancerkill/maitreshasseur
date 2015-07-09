@@ -1,0 +1,34 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 text-left">
+            <form name ="maconnexion" class="form" novalidate>
+                <div class="form-group">
+                    <label for="user">User :</label>
+                    <input ng-model="user" ng-pattern="/^[a-zA-Z0-9]+$/" type="text" name="user" class="form-control" id="user"
+                           required>
+                    <span style="color:red" ng-show="maconnexion.user.$dirty && maconnexion.user.$invalid">
+                        <span ng-show="maconnexion.user.$error.required">L'utilisateur est requis</span>
+                    </span>
+                    <span style="color:red" ng-show="maconnexion.user.$error.pattern">
+                        <span ng-show="maconnexion.user.$error.pattern">Caractères spéciaux interdit</span>
+                    </span>
+                </div>
+                <div class="form-group">
+                    <label for="mdp">Mot de Passe :</label>
+                    <input ng-model="mdp" ng-pattern="/^[a-zA-Z0-9]+$/" type="password" name="mdp" class="form-control" id="mdp"
+                           required>
+                    <span style="color:red" ng-show="maconnexion.mdp.$dirty && maconnexion.mdp.$invalid">
+                        <span ng-show="maconnexion.mdp.$error.required">Le mot de passe est requis</span>
+                    </span>
+                    <span style="color:red" ng-show="maconnexion.mdp.$error.pattern">
+                        <span ng-show="maconnexion.mdp.$error.pattern">Caractères spéciaux interdit</span>
+                    </span>
+                </div>
+                <button type="submit" class="btn btn-default" ng-disabled="maconnexion.user.$dirty && maconnexion.user.$invalid || maconnexion.mdp.$dirty && maconnexion.mdp.$invalid" ng-click="connexion()">Connexion</button>
+            </form>
+        </div>
+        <div class="col-md-12">
+            <button type="submit" class="btn btn-default" ng-click="affuser()">Afficher User</button>
+        </div>
+    </div>
+</div>

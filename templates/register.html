@@ -1,0 +1,34 @@
+<div class="container">
+    <div class="row">
+        <strong>Création du compte</strong>
+    </div>
+    <div class="row">
+        <div class="col-md-12 text-left">
+            <form name ="monregister" class="form" novalidate>
+                <div class="form-group">
+                    <label for="user">User :</label>
+                    <input ng-model="user" ng-pattern="/^[a-zA-Z0-9]+$/" type="text" name="user" class="form-control" id="user"
+                           required>
+                    <span style="color:red" ng-show="monregister.user.$dirty && monregister.user.$invalid">
+                        <span ng-show="monregister.user.$error.required">L'utilisateur est requis</span>
+                    </span>
+                    <span style="color:red" ng-show="monregister.user.$error.pattern">
+                        <span ng-show="monregister.user.$error.pattern">Caractères spéciaux interdit</span>
+                    </span>
+                </div>
+                <div class="form-group">
+                    <label for="mdp">Mot de Passe :</label>
+                    <input ng-model="mdp" ng-pattern="/^[a-zA-Z0-9]+$/" type="password" name="mdp" class="form-control" id="mdp"
+                           required>
+                    <span style="color:red" ng-show="monregister.mdp.$dirty && monregister.mdp.$invalid">
+                        <span ng-show="monregister.mdp.$error.required">Le mot de passe est requis</span>
+                    </span>
+                    <span style="color:red" ng-show="monregister.mdp.$error.pattern">
+                        <span ng-show="monregister.mdp.$error.pattern">Caractères spéciaux interdit</span>
+                    </span>
+                </div>
+                <button type="submit" class="btn btn-default" ng-disabled="monregister.user.$dirty && monregister.user.$invalid || monregister.mdp.$dirty && monregister.mdp.$invalid" ng-click="register()">Register</button>
+            </form>
+        </div>
+    </div>
+</div>

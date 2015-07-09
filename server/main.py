@@ -3,6 +3,7 @@ import os
 import jinja2
 import webapp2
 from google.appengine.ext.webapp.util import run_wsgi_app
+from server.AuthHandler import AuthHandler
 
 jinja_environment = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(os.path.dirname(__file__))),
@@ -12,7 +13,7 @@ jinja_environment = jinja2.Environment(
 
 config = {}
 config['webapp2_extras.sessions'] = {
-    'secret_key': 'my-super-secret-key',
+    'secret_key': 'jesuislemeilleurshasseurdeshiny',
 }
 
 class MainHandler(webapp2.RequestHandler):
@@ -21,6 +22,7 @@ class MainHandler(webapp2.RequestHandler):
         self.response.out.write(template.render({}))
 
 application = webapp2.WSGIApplication([
+    ('/service/connexion.*', AuthHandler),
     ('/.*', MainHandler),
 ], config=config, debug=False)
 
