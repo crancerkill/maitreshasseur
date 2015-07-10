@@ -1,4 +1,5 @@
 var app = angular.module('app', [
+    'controller',
     'ngResource',
     'ngRoute'
 ]);
@@ -28,6 +29,8 @@ app.config(['$locationProvider', function($locationProvider)
 {
     $locationProvider.html5Mode(true);
 }]);
+
+
 
 app.factory('ServiceConnexion', function ($resource)
 {
