@@ -20,6 +20,10 @@ app.config(['$routeProvider', function($routeProvider)
             templateUrl: '/templates/register.html',
             controller: RegisterCtrl
         })
+        .when('/pokemon', {
+            templateUrl: '/templates/pokemon.html',
+            controller: PokeCtrl
+        })
         .otherwise({
             redirectTo: '/'
         });
@@ -40,4 +44,13 @@ app.factory('ServiceConnexion', function ($resource)
             register: {method: 'POST', params: {key: 'register'}, isArray: false},
             affuser: {method: 'POST', params: {key: 'affuser'}, isArray: false}
         });
+});
+
+app.factory('ServicePoke', function($resource)
+{
+   return $resource('/service/pokemon/:key', {},
+       {
+          importcsv: {method: 'POST', params: {key: 'importcsv'}, isArray: false},
+          getall: {method: 'POST', params: {key: 'getall'}, isArray: false}
+       });
 });

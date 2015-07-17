@@ -24,9 +24,14 @@ class AuthHandler(BaseHandler):
                 print('user et mot de pass non rempli')
         elif mode == 'affuser':
             user = self.getSessionUser()
-            response = {
-                'user': user
-            }
+            if user:
+                response = {
+                    'user': True
+                }
+            else:
+                response = {
+                    'user': False
+                }
             self.response.write(jsonEncode.encode(response))
         elif mode == 'register':
             lebody = json.loads(self.request.body)

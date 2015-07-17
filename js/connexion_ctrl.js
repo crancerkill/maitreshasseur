@@ -2,7 +2,7 @@
 
 /* Service */
 
-function ConnexionCtrl ($scope, $location, ServiceConnexion)
+function ConnexionCtrl ($scope, $location, ServiceConnexion, User)
 {
     $scope.redirect = function(page)
     {
@@ -16,6 +16,7 @@ function ConnexionCtrl ($scope, $location, ServiceConnexion)
             mdp: $scope.mdp
         },
             function (result) {
+                User.set($scope.user)
                 $scope.redirect('/')
             }
         );

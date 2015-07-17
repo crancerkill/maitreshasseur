@@ -1,6 +1,6 @@
 'use strict';
 
-/* Service */
+/* Controleur Principal */
 
 angular.module('controller',[]).controller('MainCtrl', function($scope, ServiceConnexion)
 {
